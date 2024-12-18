@@ -32,6 +32,7 @@ namespace ItemOnLevel
         // Bool toggled by OnServerConnect to true to determin who the host is
         private static bool canSpawn = false;
 
+
         // The Awake() method is run at the very start when the game is initialized.
         public void Awake()
         {
