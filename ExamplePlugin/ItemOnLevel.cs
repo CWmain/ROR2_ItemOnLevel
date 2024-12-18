@@ -21,7 +21,7 @@ namespace ItemOnLevel
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "General";
         public const string PluginName = "ItemOnLevel";
-        public const string PluginVersion = "1.0.1";
+        public const string PluginVersion = "1.0.2";
 
         // A string representing a dictionary of the level to item formatted as "5-Feather,15-Feather"
         public static ConfigEntry<string> LevelToItemString { get; set; }
@@ -67,17 +67,9 @@ namespace ItemOnLevel
             if (body.isPlayerControlled && canSpawn && levelToItem.ContainsKey(body.level))
             {
                 Log.Info($"Spawning {levelToItem[body.level]}");
-                
-                // Convert the string item into the item def so the ItemIndex can be aquired
-                ItemDef id = typeof(RoR2Content.Items).GetFieldValue<ItemDef>(levelToItem[body.level]);
-                ItemIndex ii = id.itemIndex;
-
-                // Get the location of the player who leveled up
-                var transform = body.transform;
 
                 // Spawns the item on the current player position
                 body.inventory.GiveItemString(levelToItem[body.level]);
-                //PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(ii), transform.position, transform.forward);
 
             }
 
