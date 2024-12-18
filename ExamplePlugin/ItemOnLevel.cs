@@ -29,7 +29,7 @@ namespace ItemOnLevel
         // Global dictionary for level to item
         private static Dictionary<float, string> levelToItem = new Dictionary<float, string>();
 
-        // Bool toggled by OnServerConnect to true to determin who the host is
+        // Boolean toggled by OnServerConnect to true to determin who the host is
         private static bool canSpawn = false;
 
 
