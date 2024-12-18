@@ -76,10 +76,26 @@ namespace ItemOnLevel
                 var transform = body.transform;
 
                 // Spawns the item on the current player position
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(ii), transform.position, transform.forward);
+                body.inventory.GiveItemString(levelToItem[body.level]);
+                //PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(ii), transform.position, transform.forward);
 
             }
 
+        }
+
+        // The Update() method is run on every frame of the game.
+        private void Update()
+        {
+            // This if statement checks if the player has currently pressed F2.
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                Log.Info($"Player pressed F2. Giving 10 exp");
+                PlayerCharacterMasterController.instances[0].master.GiveExperience(10);
+
+                // And then drop our defined item in front of the player.
+
+                
+            }
         }
 
     }
