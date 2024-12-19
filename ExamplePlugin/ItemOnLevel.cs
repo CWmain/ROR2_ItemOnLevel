@@ -36,11 +36,14 @@ namespace ItemOnLevel
         // The Awake() method is run at the very start when the game is initialized.
         public void Awake()
         {
-            // Used to determin who the host is, as clients are unable to spawn items
-            On.RoR2.Networking.NetworkManagerSystemSteam.OnServerConnect += (s, u, t) => { canSpawn = true; };
-
             // Init our logging class so that we can properly log for debugging
             Log.Init(Logger);
+
+            // Remove this line before publishing/releasing your mod!
+            On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
+
+            // Used to determin who the host is, as clients are unable to spawn items
+            On.RoR2.Networking.NetworkManagerSystemSteam.OnServerConnect += (s, u, t) => { canSpawn = true; Log.Info("canSpawn is set to true"); };
 
             LevelToItemString = Config.Bind<string>(
             "ItemToLevel",
