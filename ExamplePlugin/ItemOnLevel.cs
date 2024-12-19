@@ -40,7 +40,7 @@ namespace ItemOnLevel
             Log.Init(Logger);
 
             // Remove this line before publishing/releasing your mod!
-            On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
+            // On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
 
             // Used to determin who the host is, as clients are unable to spawn items
             On.RoR2.Networking.NetworkManagerSystemSteam.OnServerConnect += (s, u, t) => { canSpawn = true; Log.Info("canSpawn is set to true"); };
@@ -48,8 +48,8 @@ namespace ItemOnLevel
             LevelToItemString = Config.Bind<string>(
             "ItemToLevel",
             "Dictionary",
-            "5-Feather",
-            "A string representing a dictionary of the level to item formatted as \"5-Feather,15-Feather\""
+            "5-Hoof,10-JumpBoost,15-Feather",
+            "A string representing a dictionary of the level to item formatted as \"5-Feather,15-Feather\"\nHopoo Feather = Feather, Wax Quail = JumpBoost, Paul's Goat Hoof = Hoof"
             );
 
             // Convert the level to item config into a usable dictionary on load
@@ -81,21 +81,6 @@ namespace ItemOnLevel
 
             }
 
-        }
-
-        // The Update() method is run on every frame of the game.
-        private void Update()
-        {
-            // This if statement checks if the player has currently pressed F2.
-            if (Input.GetKeyDown(KeyCode.F2))
-            {
-                Log.Info($"Player pressed F2. Giving 10 exp");
-                PlayerCharacterMasterController.instances[0].master.GiveExperience(10);
-
-                // And then drop our defined item in front of the player.
-
-                
-            }
         }
 
     }
