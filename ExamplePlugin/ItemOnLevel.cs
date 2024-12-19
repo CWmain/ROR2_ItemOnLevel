@@ -72,6 +72,10 @@ namespace ItemOnLevel
                 // Spawns the item on the current player position
                 body.inventory.GiveItemString(levelToItem[body.level]);
 
+                // Creates chat message to inform users of added items
+                Chat.SendBroadcastChat(new Chat.SimpleChatMessage { baseToken = "<color=#e5eefc>{0}</color>", paramTokens = new[] { $"Giving {body.GetUserName()} a {levelToItem[body.level]} for reaching level {body.level}" } });
+
+
             }
 
         }
